@@ -59,7 +59,12 @@
     overflow: hidden;
     max-height: 0;
     transition: max-height .5s ease-out;
+    margin-right: 20px;
 }
+.nav span {
+    display: inline-flex;
+}
+
 .menu a{
     display: block;
     padding: 25px;

@@ -1,7 +1,13 @@
 .cartIcon {
     font-size: 20px;
     margin-top: 20px;
-    margin-right: 20px;
+    margin-right: 5px;
     margin-left: 20px;
     color: white;
+}
+
+.greeting {
+    color:black;
+    font-size: 15px;
+    margin-top: 3px;
 }
