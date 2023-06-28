@@ -1,0 +1,48 @@
+.cardContainer{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: 5%;
+    row-gap: 50px;
+    padding: 5%;
+}
+
+.card {
+    background-color: gray;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+.cardImage {
+    width: 100%;
+}
+
+.cardName {
+    margin-bottom: 5px;
+    font-size: 21px;
+}
+
+.cardCategory {
+    margin-bottom: 5px;
+    color: #d0bef4;
+}
+
+.cardDescription {
+    margin-bottom: 10px;
+    min-height: 101px;
+    margin-top: 15px;
+}
+
+.cardPrice {
+    text-align: right;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.cardStock {
+    text-align: right;
+}
+
+.cardActions {
+    text-align: right;
+    margin-top: 20px;
+}
