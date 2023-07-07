@@ -4,17 +4,21 @@ import { Route, Routes } from "react-router-dom";
 import Card from "./components/products/card";
 import Details from './components/products/details';
 import Input from "./components/Input";
-
-import { useState, useEffect } from 'react';
+import { useFetch } from "./hooks/useFetch";
+import { useState } from 'react';
+import { API_URLS } from "./constants";
 
 
 function App() {
   const [search, setSearch] = useState('');
   const [active, setActive] = useState(false);
-  const [products, setProducts] = useState([]);
-  const [showDetails, setShowDetails] = useState(false);
+  //const [products, setProducts] = useState([]); // Estado listado Productos
+  const [showDetails, setShowDetails] = useState(false); 
   const [productDetail, setProductDetail] = useState(null);
-  const [productFiltered, setProductFiltered] = useState([]);
+  const [productFiltered, setProductFiltered] = useState([]); // Estado adicional para filtrar productos
+  
+
+  const { data: products } = useFetch( API_URLS.PRODUCTS.url, API_URLS.PRODUCTS.config ); 
 
   const filterBySearch = (query) => {
     let updateProductList = [...products];
@@ -46,25 +50,25 @@ function App() {
     setProductDetail(findProduct);
   }
 
-  useEffect(() => {
-    const getProduct = async () => {
-      try {
-        const response = await fetch('https://6499986179fbe9bcf83f91bf.mockapi.io/products', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+  // useEffect(() => {
+  //   const getProduct = async () => {
+  //     try {
+  //       const response = await fetch('https://6499986179fbe9bcf83f91bf.mockapi.io/products', {
+  //         method: 'GET',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //       });
 
-        const data = await response.json();
+  //       const data = await response.json();
 
-        setProducts(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getProduct();
-  }, [])
+  //       setProducts(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  //   getProduct();
+  // }, [])
 
 
   return (
@@ -102,10 +106,11 @@ function App() {
                     productFiltered.map((product) => (
                       <Card {...product} onShowDetails={onShowDetails}/>
                       ))
-                    ) :
+                    ) : (
                     products.map((product) => (
                       <Card {...product} onShowDetails={onShowDetails}/>
                     ))
+                    )
                 }
               </div>
             </> 
