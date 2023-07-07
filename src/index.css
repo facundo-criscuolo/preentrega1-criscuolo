@@ -93,3 +93,9 @@ button:focus-visible {
   background-color: transparent;
   font-weight: bold;
 }
+
+.status-container {
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+}
