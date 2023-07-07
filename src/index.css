@@ -73,3 +73,23 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.headerDetailContainer {
+  text-align: center
+}
+
+.headerTitleCard{
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+  text-shadow: 4px 2px 9px rgb(208, 190, 244)
+}
+
+.contentContainer {
+  padding: 5%;
+}
+
+.backButton {
+  background-color: transparent;
+  font-weight: bold;
+}

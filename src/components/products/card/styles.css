@@ -6,18 +6,41 @@
     padding: 5%;
 }
 
+@media (min-width: 900px) and (max-width: 1300px) {
+    .cardContainer{
+        grid-template-columns: 50% 50%!important;
+        column-gap: 3%!important;
+    }
+}
+
+@media (max-width: 900px) {
+    .cardContainer{
+        grid-template-columns: 100%!important;
+        column-gap: 3%!important;
+    }
+}
+
+
 .card {
     background-color: gray;
     padding: 5%;
     border-radius: 10px;
+    z-index: 1;
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+    scale: 1.07;
 }
 
 .cardImage {
     width: 100%;
+    border-radius: 10px;
 }
 
 .cardName {
     margin-bottom: 5px;
+    margin-top: 10px;
     font-size: 21px;
 }
 
@@ -40,9 +63,14 @@
 
 .cardStock {
     text-align: right;
+    color: #d0bef4;
 }
 
 .cardActions {
     text-align: right;
     margin-top: 20px;
+}
+
+.cardButton:hover {
+    scale: 1.07;
 }

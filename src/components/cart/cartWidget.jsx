@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./styles.css";
 import AddToCart from "./itemListContainer";
 
 const Cart =  ({ logo, menuItem }) => {

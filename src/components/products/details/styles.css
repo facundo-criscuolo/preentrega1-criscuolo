@@ -1,0 +1,68 @@
+.detailContainer{
+   display: flex;
+}
+
+.detail {
+    background-color: transparent;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+.col1 {
+    width: 30%;
+    float: left;
+}
+
+.col2 {
+    width: 70%;
+    float: right;
+    padding: 0 5%;
+}
+
+.detailImage {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.detailName {
+    margin-bottom: 5px;
+    font-size: 50px;
+    font-weight: 900;
+    text-shadow: 4px 2px 9px rgb(208, 190, 244)
+}
+
+.detailCategory {
+    margin-bottom: 5px;
+    color: #d0bef4;
+}
+
+.detailDescription {
+    margin: 40px 0;
+    min-height: 101px;
+    font-size: 25px;
+}
+
+.detailPrice {
+    text-align: left;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.detailStock {
+    font-size: 15px;
+    text-align: left;
+    color: #d0bef4;
+}
+
+.detailActions {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.detailButton {
+    margin-right: 10px;
+}
+
+.detailButton:hover {
+    scale: 1.1;
+}
