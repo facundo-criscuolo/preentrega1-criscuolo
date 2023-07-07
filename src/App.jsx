@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Card from "./components/products/card";
 import Details from './components/products/details';
 import Input from "./components/Input";
+import Loader from "./components/loader";
 import { useFetch } from "./hooks/useFetch";
 import { useState } from 'react';
 import { API_URLS } from "./constants";
@@ -18,7 +19,7 @@ function App() {
   const [productFiltered, setProductFiltered] = useState([]); // Estado adicional para filtrar productos
   
 
-  const { data: products } = useFetch( API_URLS.PRODUCTS.url, API_URLS.PRODUCTS.config ); 
+  const { data: products, loading, error } = useFetch( API_URLS.PRODUCTS.url, API_URLS.PRODUCTS.config ); 
 
   const filterBySearch = (query) => {
     let updateProductList = [...products];
@@ -100,6 +101,8 @@ function App() {
                         active={active}
                       />
               </div>
+              {loading && <Loader ></Loader>}
+
               <div className='cardContainer'>
                 {
                   search.length > 0 ? (
