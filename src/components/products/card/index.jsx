@@ -9,7 +9,7 @@ const Card = ({ id, image, name, category, description, price, stock, onAddToCar
                 <p className='cardCategory'>{category}</p>
                 <p className='cardDescription'>{description}</p>
                 <p className='cardPrice'>USD {price}</p>
-                <p className='cardStock'>{(stock/10000).toFixed(0)} left</p>
+                <p className='cardStock'>{stock} left</p>
             </div>
             <div className='cardActions'>
                 <button onClick={() => onAddToCart(id)} className='cardButton'>Add to cart</button>

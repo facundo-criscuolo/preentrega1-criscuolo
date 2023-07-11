@@ -9,7 +9,7 @@ const Details = ({ id, image, name, category, description, price, stock, onAddTo
             <div className='col2'> 
                 <div className='detailContent'>
                     <h3 className='detailName'>{name}</h3>
-                    <p className='detailPrice'>USD {price} <span className='detailStock'>({(stock/10000).toFixed(0)} left)</span></p>
+                    <p className='detailPrice'>USD {price} <span className='detailStock'>{stock} left)</span></p>
                     <p className='detailCategory'>{category}</p>
                     <p className='detailDescription'>{description}</p>
                 </div>

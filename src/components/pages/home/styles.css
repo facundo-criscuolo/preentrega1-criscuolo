@@ -99,3 +99,15 @@
     display: flex;
     justify-content: center;
   }
+
+  .categoryContainer {
+      min-width: 200px;
+      height: fit-content;
+      background-color: #747bff;
+      margin: 1rem;
+      padding: 1rem;
+  }
+
+.noProduct {
+  text-align: center;
+}

@@ -1,0 +1,39 @@
+.sliderContent {
+    display: flex;
+    flex-direction: row;
+    scroll-behavior: smooth;
+    cursor: pointer;
+    overflow-x: hidden;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.slider {
+    overflow: hidden;
+    position: relative;
+}
+
+
+.slider .prevButton {
+    left: 4px;
+    position: absolute;
+    height: fit-content;
+    display: flex;
+    margin: 20px 0;
+    opacity: 0.6;
+}
+
+.slider .nextButton {
+    right: 4px;
+    position: absolute;
+    height: fit-content;
+    display: flex;
+    margin: 20px 0;
+    opacity: 0.6;
+}
+
+.slider .prevButton:hover, .slider .nextButton:hover {
+    opacity: 1;
+}
+
+
