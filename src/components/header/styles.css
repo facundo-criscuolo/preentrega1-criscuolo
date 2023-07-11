@@ -121,3 +121,14 @@
         display: none;
     }
 }
+
+.navCategory {
+    margin: 8px;
+    background-color: #d0bef4;
+}
+
+.navCategory:hover, .navCategory:active {
+    background-color: #212121!important;
+}
+
+

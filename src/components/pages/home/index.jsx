@@ -56,6 +56,7 @@ function Home() {
     navigate(`/products/${id}`);
   }
 
+
   const onFilter = (name) => {
     setIsFiltered(true);
     const productsByCategory = products.filter((product => product.category === name));

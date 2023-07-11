@@ -3,7 +3,7 @@ import './styles.css';
 import Navbar from "./navbar";
 
 
-const Header = ({ logo, menuItem }) => {
+const Header = ({ logo, menuItem, onShowCategory }) => {
     return (
         <header className="header">
             <a href="/" className="logo">{logo}</a>
@@ -11,7 +11,7 @@ const Header = ({ logo, menuItem }) => {
             <label className="hamb" htmlFor ="side-menu">
                 <span className="hamb-line"></span>
             </label>
-          <Navbar />
+          <Navbar onShowCategory={onShowCategory} />
         </header>
     )
 }
