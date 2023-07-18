@@ -111,3 +111,41 @@
 .noProduct {
   text-align: center;
 }
+
+
+
+.cartItem {
+  display: flex;
+  flex-direction: row;
+  margin: 30px;
+}
+.cartImageContainer {
+  max-width: 150px;
+}
+.cartContentContainer {
+  padding: 0px 30px 0px 30px;
+}
+.cartName {
+  font-weight: 800;
+  font-size: 20px;
+}
+.cartQuantity {
+
+}
+.cartPrice {
+  font-weight: 800;
+  font-size: 20px;
+}
+.cartStock {
+  margin-left: 15px;
+}
+.cartAddButton {
+  padding: 0px 10px 0px 10px;
+}
+.cartDecreaseButton {
+  padding: 0px 10px 0px 10px;
+}
+.cartDeleteButton {
+  padding: 0px 10px 0px 10px;
+  color: gray
+}
