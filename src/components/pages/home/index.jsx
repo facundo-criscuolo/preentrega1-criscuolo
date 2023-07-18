@@ -22,6 +22,7 @@ function Home() {
   const [isFiltered, setIsFiltered] = useState(false); 
   const [productDetail, setProductDetail] = useState(null);
   const [productFiltered, setProductFiltered] = useState([]); // Estado adicional para filtrar productos
+  const [cart, setCart] = useState([]);
   
 
   const { data: products, loadingProducts, errorProducts } = useFetch( API_URLS.PRODUCTS.url, API_URLS.PRODUCTS.config ); 
@@ -61,6 +62,31 @@ function Home() {
     setIsFiltered(true);
     const productsByCategory = products.filter((product => product.category === name));
     setProductFiltered(productsByCategory);
+  }
+
+  const onAddToCart = (id) => {
+    const item =  products.find((product) => product.id === id);
+
+    console.log(cart?.find((product) => product.id === id)?.quantity);
+
+    if(cart?.find((product) => product.id === id)?.quantity === Number(item.stock)) return;
+    if(cart?.length === 0) {
+      setCart([{...item, quantity: 1}])
+    }
+    if(cart?.length > 0 && !cart?.find((product) => product.id === id)) {
+      setCart([...cart, {...item, quantity: 1}])
+    }
+    if(cart?.length > 0 && cart?.find((product) => product.id === id)) {
+      setCart((currentCart) => {
+        return currentCart.map((product) => {
+          if (product.id === id) {
+            return {...product, quantity: product.quantity + 1}
+          } else {
+            return product;
+          }
+        })
+      })
+    }
   }
 
   return (
@@ -110,11 +136,11 @@ function Home() {
                   // search.length > 0 ? (
                     isFiltered ? (
                     productFiltered.map((product) => (
-                      <Card {...product} onShowDetails={onShowDetails}/>
+                      <Card {...product} onShowDetails={onShowDetails} onAddToCart={onAddToCart}/>
                       ))
                     ) : (
                     products.map((product) => (
-                      <Card {...product} onShowDetails={onShowDetails}/>
+                      <Card {...product} onShowDetails={onShowDetails} onAddToCart={onAddToCart}/>
                     ))
                     )
                 }

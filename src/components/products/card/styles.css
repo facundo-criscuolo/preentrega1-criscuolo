@@ -74,3 +74,10 @@
 .cardButton:hover {
     scale: 1.07;
 }
+
+.cardButtonContainer {
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
