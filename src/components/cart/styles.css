@@ -4,6 +4,7 @@
     margin-right: 5px;
     margin-left: 20px;
     color: white;
+    transition: transform .2s;
 }
 
 .greeting {
@@ -17,6 +18,19 @@
     position: fixed;
 }
 
+
 .cartIconContainer {
-    cursor: pointer
+    cursor: pointer;
+}
+.cartIconContainer:hover > .cartCount{
+    text-shadow: 4px 4px 9px rgb(208, 190, 244);
+    font-weight: bold;
+}
+
+.cartIcon:hover {
+    transform: scale(1.4);
+}
+
+.cartContainer{
+    width: 50%;
 }

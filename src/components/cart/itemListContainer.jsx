@@ -2,15 +2,15 @@ import React from "react";
 import Cart from "./cartWidget";
 import "./styles.css";
 import { useContext } from "react";
+import { CartContext } from "../../context/cart-context";
 
-const AddToCart = () => {
+const HeaderCartCount = () => {
 
+  const { cart, getCartTotalQuantity } = useContext(CartContext);
 
   return (
-    <div>
-      <h2 className="greeting">{}</h2>
-    </div>
+        <span className="cartCount">{getCartTotalQuantity()}</span>
   );
 }
 
-export default AddToCart;
+export default HeaderCartCount;
