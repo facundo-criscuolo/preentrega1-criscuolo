@@ -11,3 +11,12 @@
     font-size: 15px;
     margin-top: 3px;
 }
+
+.cartCount {
+    margin-top: 8px;
+    position: fixed;
+}
+
+.cartIconContainer {
+    cursor: pointer
+}

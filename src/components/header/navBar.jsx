@@ -1,6 +1,6 @@
 import React from "react";
 import './styles.css';
-import Cart from "../cart/cartWidget";
+import CartHeader from "../cart/cartWidget";
 
 const Navbar = ({ logo, menuItem, onShowCategory }) => {
     return (
@@ -12,7 +12,7 @@ const Navbar = ({ logo, menuItem, onShowCategory }) => {
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Products</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><Cart /></li>
+                    <li><CartHeader /></li>
                 </ul>
             </nav>
     )
