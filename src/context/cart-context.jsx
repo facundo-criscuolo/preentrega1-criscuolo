@@ -6,6 +6,7 @@ const initialState = {
     cart: [],
     setCart: () => {},
     getItemQuantity: () => {},
+    getCartTotalQuantity: () => {},
     onDecreaseItem:  () => {},
     onAddToCart:  () => {},
     onRemoveCartItem: () => {},
@@ -20,7 +21,13 @@ export const CartProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
 
     const onAddToCart = (id) => {
+        console.log(id);
         const item =  products.find((product) => product.id === id);
+        
+        if (!item) {
+          console.error(`No product found with id: ${id}`);
+          return;
+        }
     
         if(cart?.find((product) => product.id === id)?.quantity === Number(item.stock)) return;
         if(cart?.length === 0) {

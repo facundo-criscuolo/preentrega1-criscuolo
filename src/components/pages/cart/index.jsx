@@ -1,11 +1,14 @@
 import React from "react";
 import { useContext } from "react";
 import { CartContext } from "../../../context/cart-context";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 function Cart () {
 
     const {cart, onAddToCart, onDecreaseItem, onRemoveCartItem, getCartTotalQuantity, total } = useContext(CartContext);
+    const navigate = useNavigate();
+    const history = window.history;
 
     return (
 
@@ -37,7 +40,16 @@ function Cart () {
                 {
                   cart?.length > 0 && (
                     <>
-                        <h3 className="cartSubtotal">Subtotal: USD {total}<span class="cartTotalQuantity"> Items in Cart: {getCartTotalQuantity()}</span></h3> 
+                        <div className="cartActionsContainer">
+                            <h3 className="cartSubtotal">Subtotal: USD {total}</h3> 
+                            <p className="cartTotalQuantity"> Items in Cart: {getCartTotalQuantity()}</p>
+                            <button type="button" className="cartActionsCheckout">Go To Checkout</button>
+                        </div>
+
+                        <div className="headerDetailContainer">
+                            {history.length > 2 ? 
+                            <button onClick={() => navigate(-1)} className='backButton'>⇦ Back</button> : null }
+                        </div>
                         
                     </>
                   )

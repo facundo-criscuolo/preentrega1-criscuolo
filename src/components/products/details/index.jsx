@@ -1,6 +1,12 @@
-import './styles.css'
+import './styles.css';
+import { useContext } from 'react';
+import { CartContext } from "../../../context/cart-context";
 
-const Details = ({ id, image, name, category, description, price, stock, onAddToCart }) => {
+
+const Details = ({ id, image, name, category, description, price, stock }) => {
+
+    const { onAddToCart } = useContext(CartContext)
+
     return (
         <div className='detail'>
             <div className='col1'> 
@@ -9,7 +15,7 @@ const Details = ({ id, image, name, category, description, price, stock, onAddTo
             <div className='col2'> 
                 <div className='detailContent'>
                     <h3 className='detailName'>{name}</h3>
-                    <p className='detailPrice'>USD {price} <span className='detailStock'>{stock} left)</span></p>
+                    <p className='detailPrice'>USD {price} <span className='detailStock'>({stock} left)</span></p>
                     <p className='detailCategory'>{category}</p>
                     <p className='detailDescription'>{description}</p>
                 </div>

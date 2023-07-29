@@ -3,6 +3,7 @@ import { API_URLS } from "../../../constants";
 import { useFetch } from "../../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import Details from "../../products/details";
+
 import "./styles.css";
 
 function ProductDetail() {
@@ -10,9 +11,10 @@ function ProductDetail() {
     const urlProductDetail = `${API_URLS.PRODUCTS.url}/${productId}`;
     const navigate = useNavigate();
     const history = window.history;
+  
     
-    console.log({productId});
     const { data, loading, error } = useFetch( urlProductDetail, API_URLS.PRODUCTS.config ); 
+
 
     return (
             <>

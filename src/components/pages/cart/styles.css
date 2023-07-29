@@ -1,8 +1,6 @@
 .cartSubtotal{
-    text-align: left;
     font-size: 24px;
     padding: 2%;
-    margin-bottom: 30px;
     text-shadow: 4px 2px 9px rgb(208, 190, 244)
 }
 
@@ -83,6 +81,16 @@
 }
 .cartTotalQuantity{
     font-size: 18px;
-    padding-left: 30px;
     text-shadow: none;
+}
+
+.cartActionsContainer {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  gap: 2rem;
+  padding: 2%;
+  vertical-align: middle;
+  justify-content: flex-start;
+  align-items: center;
 }

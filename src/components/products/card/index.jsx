@@ -1,6 +1,8 @@
 import './styles.css';
 
 const Card = ({ id, image, name, category, description, price, stock, onAddToCart, onShowDetails }) => {
+
+
     return (
         <div key={id} className='card' >
             <button className='cardButtonContainer' onClick={() => onShowDetails(id)}>
