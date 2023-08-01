@@ -31,7 +31,8 @@ const Checkout = () => {
         // inputBlur({ name })
     }
 
-    console.log(formState)
+    console.log(formState);
+
  
     return (
 
@@ -48,9 +49,11 @@ const Checkout = () => {
                                     required={true}
                                     label='name'
                                     onChange={onChange}
-                                    onFocus={onFocus}
+                                    onFocus={() => onFocus({ name: 'name' })}
                                     onBlur={onBlur}
                                     active={formState.name.active}
+                                    error={formState.name.error}
+                                    hasError={formState.name.hasError}
                                 />
                              </div>
                              <div className='inputContainer'>
@@ -60,9 +63,11 @@ const Checkout = () => {
                                     required={true}
                                     label='last'
                                     onChange={onChange}
-                                    onFocus={() => onFocus({name: 'name', active: true})}
+                                    onFocus={() => onFocus({name: 'last' })}
                                     onBlur={onBlur}
                                     active={formState.last.active}
+                                    error={formState.last.error}
+                                    hasError={formState.last.hasError}
                                 />
                              </div>                           
                               <div className='inputContainer'>
@@ -72,9 +77,11 @@ const Checkout = () => {
                                     required={true}
                                     label='email'
                                     onChange={onChange}
-                                    onFocus={onFocus}
+                                    onFocus={() => onFocus({ name: 'email' })}
                                     onBlur={onBlur}
-                                    active={formState.email.active}                                />
+                                    active={formState.email.active}   
+                                    error={formState.email.error}
+                                    hasError={formState.email.hasError}                             />
                              </div>                            
                              <div className='inputContainer'>
                                 <Input 
@@ -83,9 +90,11 @@ const Checkout = () => {
                                     required={true}
                                     label='birthday'
                                     onChange={onChange}
-                                    onFocus={onFocus}
+                                    onFocus={() => onFocus({ name: 'birthday' })}
                                     onBlur={onBlur}
-                                    active={formState.birthday.active}                                />
+                                    active={formState.birthday.active}        
+                                    error={formState.birthday.error}
+                                    hasError={formState.birthday.hasError}                        />
                              </div>                            
                              <div className='inputContainer'>
                                 <Input 
@@ -94,9 +103,11 @@ const Checkout = () => {
                                     required={true}
                                     label='address'
                                     onChange={onChange}
-                                    onFocus={onFocus}
+                                    onFocus={() => onFocus({ name: 'address' })}
                                     onBlur={onBlur}
-                                    active={formState.address.active}                                />
+                                    active={formState.address.active}     
+                                    error={formState.address.error}
+                                    hasError={formState.address.hasError}                           />
                              </div>                            
                              <div className='inputContainer'>
                                 <Input 
@@ -105,9 +116,11 @@ const Checkout = () => {
                                     required={true}
                                     label='document'
                                     onChange={onChange}
-                                    onFocus={onFocus}
+                                    onFocus={() => onFocus({ name: 'document' })}
                                     onBlur={onBlur}
-                                    active={formState.document.active}                                />
+                                    active={formState.document.active}                                    
+                                                               />
+                                    
                              </div>
                              <div className='inputContainer'>
                                 <Input 
@@ -116,12 +129,10 @@ const Checkout = () => {
                                     required={true}
                                     label='postalcode'
                                     onChange={onChange}
-                                    onFocus={onFocus}
+                                    onFocus={() => onFocus({ name: 'postalcode' })}
                                     onBlur={onBlur}
                                     active={formState.postalcode.active}                                />
-                             </div>
-
-                   
+                             </div>                   
                         </div>
                     </form>
                 </div>

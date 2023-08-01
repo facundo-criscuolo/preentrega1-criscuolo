@@ -38,7 +38,7 @@ function Cart () {
             </div>
           <div className="cartSubTotalContainer">
                 {
-                  cart?.length > 0 && (
+                  cart?.length > 0 && ( 
                     <>
                         <div className="cartActionsContainer">
                             <h3 className="cartSubtotal">Subtotal: USD {total}</h3> 

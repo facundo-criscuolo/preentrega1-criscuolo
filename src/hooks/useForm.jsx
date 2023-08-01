@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import { validateInput } from "../utils/functions/form-validation";
 
 const INPUT_ACTIONS = {
     INPUT_CHANGE: 'INPUT_CHANGE',
@@ -50,8 +51,8 @@ export const useForm = (initialState) => {
 
     const [formState, dispatchFormState] = useReducer(formReducer, initialState)
 
-    const inputHandler = ({ name, value, dispatch = dispatchFormState }) => {
-        const { error, hasError} = validateInput({ type: name, value});
+    const inputHandler = ({ name, value }) => {
+        const { error, hasError } = validateInput({ type: name, value });
         let isFormValid = true;
 
         for(const key in formState){
@@ -65,7 +66,7 @@ export const useForm = (initialState) => {
             }
         }
 
-        dispatch({
+        dispatchFormState({
             type: INPUT_ACTIONS.INPUT_CHANGE,
             data: {
                 name,
