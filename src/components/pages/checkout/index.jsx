@@ -1,6 +1,5 @@
 import "./styles.css";
 import Input from "../../Input";
-import { useState } from "react";
 import { useForm } from "../../../hooks/useForm";
 
 const initialState = {
@@ -15,8 +14,7 @@ const initialState = {
 
 const Checkout = () => {
 
-    const [formState, inputHandler, cleanInputs, inputFocus] = useForm(initialState)
-    const [active, setActive] = useState(false)
+    const [formState, inputHandler, inputFocus, inputBlur] = useForm(initialState);
 
     const onChange = (event) => {
         const { name, value } = event.target
@@ -28,7 +26,7 @@ const Checkout = () => {
     }
 
     const onBlur = ({ name }) => {
-        // inputBlur({ name })
+        inputBlur({ name })
     }
 
     console.log(formState);
@@ -50,7 +48,7 @@ const Checkout = () => {
                                     label='name'
                                     onChange={onChange}
                                     onFocus={() => onFocus({ name: 'name' })}
-                                    onBlur={onBlur}
+                                    onBlur={() => onBlur({ name: 'name' })}
                                     active={formState.name.active}
                                     error={formState.name.error}
                                     hasError={formState.name.hasError}
@@ -64,7 +62,7 @@ const Checkout = () => {
                                     label='last'
                                     onChange={onChange}
                                     onFocus={() => onFocus({name: 'last' })}
-                                    onBlur={onBlur}
+                                    onBlur={() => onBlur({name: 'last' })}
                                     active={formState.last.active}
                                     error={formState.last.error}
                                     hasError={formState.last.hasError}
@@ -78,10 +76,11 @@ const Checkout = () => {
                                     label='email'
                                     onChange={onChange}
                                     onFocus={() => onFocus({ name: 'email' })}
-                                    onBlur={onBlur}
+                                    onBlur={() => onBlur({name: 'email' })}
                                     active={formState.email.active}   
                                     error={formState.email.error}
-                                    hasError={formState.email.hasError}                             />
+                                    hasError={formState.email.hasError}                             
+                                    />
                              </div>                            
                              <div className='inputContainer'>
                                 <Input 
@@ -91,10 +90,11 @@ const Checkout = () => {
                                     label='birthday'
                                     onChange={onChange}
                                     onFocus={() => onFocus({ name: 'birthday' })}
-                                    onBlur={onBlur}
+                                    onBlur={() => onBlur({name: 'birthday' })}
                                     active={formState.birthday.active}        
                                     error={formState.birthday.error}
-                                    hasError={formState.birthday.hasError}                        />
+                                    hasError={formState.birthday.hasError}                       
+                                    />
                              </div>                            
                              <div className='inputContainer'>
                                 <Input 
@@ -104,10 +104,11 @@ const Checkout = () => {
                                     label='address'
                                     onChange={onChange}
                                     onFocus={() => onFocus({ name: 'address' })}
-                                    onBlur={onBlur}
+                                    onBlur={() => onBlur({name: 'address' })}
                                     active={formState.address.active}     
                                     error={formState.address.error}
-                                    hasError={formState.address.hasError}                           />
+                                    hasError={formState.address.hasError}                          
+                                     />
                              </div>                            
                              <div className='inputContainer'>
                                 <Input 
@@ -117,9 +118,9 @@ const Checkout = () => {
                                     label='document'
                                     onChange={onChange}
                                     onFocus={() => onFocus({ name: 'document' })}
-                                    onBlur={onBlur}
+                                    onBlur={() => onBlur({ name: 'document' })}
                                     active={formState.document.active}                                    
-                                                               />
+                                />
                                     
                              </div>
                              <div className='inputContainer'>
@@ -130,9 +131,13 @@ const Checkout = () => {
                                     label='postalcode'
                                     onChange={onChange}
                                     onFocus={() => onFocus({ name: 'postalcode' })}
-                                    onBlur={onBlur}
-                                    active={formState.postalcode.active}                                />
+                                    onBlur={() => onBlur({ name: 'postalcode' })}
+                                    active={formState.postalcode.active}                               
+                                     />
                              </div>                   
+                        </div>
+                        <div className="checkoutContainer">
+                            <button disabled={!formState.isFormValid} type='submit' className='butttonCheckout'>Checkout</button>
                         </div>
                     </form>
                 </div>

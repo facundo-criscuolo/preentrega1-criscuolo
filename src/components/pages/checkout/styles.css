@@ -13,3 +13,7 @@
     text-shadow: 4px 2px 9px rgb(208, 190, 244);
 
 }
+
+.butttonCheckout:disabled {
+    cursor: not-allowed
+}
