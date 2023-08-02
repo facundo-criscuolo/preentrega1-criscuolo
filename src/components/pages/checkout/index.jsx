@@ -9,7 +9,8 @@ const initialState = {
     birthday: {value: '', error: '', hasError: true, active: false, name: 'birthday'},
     address: {value: '', error: '', hasError: true, active: false, name: 'address'},
     document: {value: '', error: '', hasError: true, active: false, name: 'document'},
-    postalcode: {value: '', error: '', hasError: true, active: false, name: 'postalcode'}
+    postalcode: {value: '', error: '', hasError: true, active: false, name: 'postalcode'},
+    isFormValid: false,
 }
 
 const Checkout = () => {
@@ -44,6 +45,7 @@ const Checkout = () => {
                                 <Input 
                                     placeholder='Your Name'
                                     id='name'
+                                    name='name'
                                     required={true}
                                     label='name'
                                     onChange={onChange}
@@ -58,6 +60,7 @@ const Checkout = () => {
                                 <Input 
                                     placeholder='Your Last'
                                     id='last'
+                                    name='last'
                                     required={true}
                                     label='last'
                                     onChange={onChange}
@@ -72,6 +75,7 @@ const Checkout = () => {
                                 <Input 
                                     placeholder='Your Email'
                                     id='email'
+                                    name='email'
                                     required={true}
                                     label='email'
                                     onChange={onChange}
@@ -86,6 +90,7 @@ const Checkout = () => {
                                 <Input 
                                     placeholder='Your Birthday'
                                     id='birthday'
+                                    name='birthday'
                                     required={true}
                                     label='birthday'
                                     onChange={onChange}
@@ -100,6 +105,7 @@ const Checkout = () => {
                                 <Input 
                                     placeholder='Your Address'
                                     id='address'
+                                    name='address'
                                     required={true}
                                     label='address'
                                     onChange={onChange}
@@ -114,6 +120,7 @@ const Checkout = () => {
                                 <Input 
                                     placeholder='Your ID Number'
                                     id='document'
+                                    name='document'
                                     required={true}
                                     label='document'
                                     onChange={onChange}
@@ -127,6 +134,7 @@ const Checkout = () => {
                                 <Input 
                                     placeholder='Your Postal Code'
                                     id='postalcode'
+                                    name='postalcode'
                                     required={true}
                                     label='postalcode'
                                     onChange={onChange}

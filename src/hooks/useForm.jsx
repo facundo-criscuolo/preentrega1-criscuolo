@@ -80,24 +80,25 @@ export const useForm = (initialState) => {
     }
     
 
-    const clearInputs = ({ formState, dispatch = dispatchFormState }) => {
-        dispatch({
+    const clearInputs = ({ formState  }) => {
+        dispatchFormState({
             type: INPUT_ACTIONS.CLEAR_INPUTS,
             data: formState,
         })
     }
 
-    const inputFocus = ({ name, dispatch = dispatchFormState }) => {
-        dispatch({
+    const inputFocus = ({ name, active }) => {
+        dispatchFormState({
             type: INPUT_ACTIONS.INPUT_FOCUS,
             data: {
                 name,
+                active,
             }
         })
     }
 
-    const inputBlur = ({ name, dispatch = dispatchFormState}) => {
-        dispatch({
+    const inputBlur = ({ name }) => {
+        dispatchFormState({
             type: INPUT_ACTIONS.INPUT_BLUR,
             data: {
                 name,
