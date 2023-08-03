@@ -81,7 +81,7 @@ export const useForm = (initialState) => {
     }
     
 
-    const clearInputs = ({ formState  }) => {
+    const clearInputs = ({ formState }) => {
         dispatchFormState({
             type: INPUT_ACTIONS.CLEAR_INPUTS,
             data: formState,

@@ -19,14 +19,11 @@ const initialState = {
 
 const Checkout = () => {
 
-    const [formState, inputHandler, inputFocus, inputBlur] = useForm(initialState);
-    const {cart, total} = useContext(CartContext);
-    const [orderCreated, setOrderCreated] = useState(null);
+    const [formState, inputHandler, inputFocus, inputBlur, clearInputs] = useForm(initialState);
+    const {cart, total, setCart} = useContext(CartContext);
     const { state } = useLocation();
     const navigate = useNavigate();
     let query = useQuery();
-
-    console.log(query.get('cartId'))
 
     useEffect(() => {
        
@@ -94,16 +91,14 @@ const Checkout = () => {
         
         const orderId = await firebaseServices.createOrder(newOrder);
         await firebaseServices.updateCart(state?.cartId);
-        return {
-            orderId,
-        
-        }
+        return orderId;
     }
 
     const onSubmit = async (event) => {
         event.preventDefault();
         const orderId = await onHandlerOrder();
-        setOrderCreated(orderId)
+        clearInputs({ formState })
+        navigate('/success-order', { state: { orderId: orderId.id } })
     }
  
     return (

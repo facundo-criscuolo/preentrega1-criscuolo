@@ -1,0 +1,11 @@
+.orderNumber span {
+    font-weight: bold;
+}
+.successContainer {
+    padding: 2%;
+    text-align: center;
+}
+.successInfoContainer {
+    margin-top: 5rem;
+    padding: 2%;
+}

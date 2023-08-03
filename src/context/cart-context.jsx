@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { API_URLS } from "../constants";
+import { useFetch } from "../hooks/useFetch";
 
 const initialState = {
     pruducts: [],
@@ -11,6 +13,8 @@ const initialState = {
     onAddToCart:  () => {},
     onRemoveCartItem: () => {},
     total: 0,
+    loading: true,
+    error: null,
 }
 
 export const CartContext = createContext(initialState);
@@ -18,10 +22,24 @@ export const CartContext = createContext(initialState);
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [products, setProducts] = useState([]);
+    const [products, setProductsState] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const { data: allProducts, loading: loadingProducts, error: errorProducts } = useFetch(API_URLS.PRODUCTS.url, API_URLS.PRODUCTS.config);
+
+    useEffect(() => {
+      if (!loadingProducts && allProducts) {
+          setProducts(allProducts);
+          setLoading(false);
+      }
+
+      if (errorProducts) {
+          setError(errorProducts);
+      }
+  }, [loadingProducts, allProducts, errorProducts]);
 
     const onAddToCart = (id) => {
-        console.log(id);
         const item =  products.find((product) => product.id === id);
         
         if (!item) {
@@ -81,6 +99,10 @@ export const CartProvider = ({ children }) => {
           return cart.reduce((acc, product) => acc + product.quantity, 0)
       }
 
+      const setProducts = (newProducts) => {
+        setProductsState(newProducts);
+    }
+
       return (
           <CartContext.Provider 
             value={{ 
@@ -92,10 +114,13 @@ export const CartProvider = ({ children }) => {
                 products,
                 categories,
                 setProducts,
+                setProductsState,
                 setCategories,
                 getItemQuantity,
                 getCartTotalQuantity,
                 total,
+                loading,
+                error
                 }}>
 
               {children}

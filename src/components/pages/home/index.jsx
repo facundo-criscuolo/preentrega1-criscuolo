@@ -1,10 +1,7 @@
 import "./styles.css";
-import Header from "../../header";
 import Card from "../../products/card";
-import Details from '../../products/details';
 import Input from "../../Input";
 import Loader from "../../loader";
-import ProductDetail from "../product-detail";
 import Slider from "../../slider";
 import { useState, useEffect, useContext } from 'react';
 import { useFetch } from "../../../hooks/useFetch";
@@ -12,16 +9,12 @@ import { API_URLS } from "../../../constants";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/cart-context";
 
-
-
 function Home() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [active, setActive] = useState(false);
-  //const [products, setProducts] = useState([]); // Estado listado Productos
   const [isFiltered, setIsFiltered] = useState(false); 
-  const [productDetail, setProductDetail] = useState(null);
-  const [productFiltered, setProductFiltered] = useState([]); // Estado adicional para filtrar productos
+  const [productFiltered, setProductFiltered] = useState([]); 
 
   const {setProducts, products: productsContext, onAddToCart, cart} = useContext(CartContext);
 

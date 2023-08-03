@@ -7,6 +7,7 @@ import Category from "./components/pages/category";
 import { CartProvider } from "./context/cart-context";
 import Cart from "./components/pages/cart";
 import Checkout from "./components/pages/checkout";
+import SuccessOrder from "./components/pages/success-order";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='categories/:categoryId' element={<Category />} />
           <Route path='cart' element={<Cart />} />
           <Route path='checkout' element={<Checkout />} />
+          <Route path='success-order' element={<SuccessOrder />} />
         </Routes>
       </CartProvider>
     </div>

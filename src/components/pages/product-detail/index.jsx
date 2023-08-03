@@ -1,20 +1,17 @@
+import "./styles.css";
+import Details from "../../products/details";
 import { Navigate, useParams } from "react-router-dom";
 import { API_URLS } from "../../../constants";
 import { useFetch } from "../../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
-import Details from "../../products/details";
-
-import "./styles.css";
 
 function ProductDetail() {
     const { productId } = useParams();
-    const urlProductDetail = `${API_URLS.PRODUCTS.url}/${productId}`;
     const navigate = useNavigate();
+    const urlProductDetail = `${API_URLS.PRODUCTS.url}/${productId}`;
     const history = window.history;
   
-    
     const { data, loading, error } = useFetch( urlProductDetail, API_URLS.PRODUCTS.config ); 
-
 
     return (
             <>

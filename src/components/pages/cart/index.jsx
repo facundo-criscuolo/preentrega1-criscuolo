@@ -53,7 +53,6 @@ function Cart () {
                             <button onClick={() => onRemoveCartItem(product.id)} className="cartDeleteButton" type="button">Remove</button>
                         </div>
                         </div>
-
                     ))
                     }
 
