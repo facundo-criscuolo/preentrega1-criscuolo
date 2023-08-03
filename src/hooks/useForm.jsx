@@ -24,6 +24,7 @@ const formReducer = (state, action) => {
             isFormValid,
          };
          case INPUT_ACTIONS.INPUT_FOCUS:
+
             return {
                 ...state,
                 [action.data.name]: {
@@ -87,12 +88,11 @@ export const useForm = (initialState) => {
         })
     }
 
-    const inputFocus = ({ name, active }) => {
+    const inputFocus = ({ name }) => {
         dispatchFormState({
             type: INPUT_ACTIONS.INPUT_FOCUS,
             data: {
                 name,
-                active,
             }
         })
     }

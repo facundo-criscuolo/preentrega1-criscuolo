@@ -72,8 +72,6 @@ function Home() {
   }
 
 
-console.log(productsContext, cart);
-
   return (
     <div>
       <div className='contentContainer'>

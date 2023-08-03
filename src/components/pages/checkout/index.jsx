@@ -1,12 +1,16 @@
 import "./styles.css";
 import Input from "../../Input";
 import { useForm } from "../../../hooks/useForm";
+import { useState, useContext, useEffect } from "react";
+import { CartContext } from "../../../context/cart-context";
+import { firebaseServices } from "../../../services/firebase";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useQuery } from "../../../hooks/useQuery";
 
 const initialState = {
     name: {value: '', error: '', hasError: true, active: false, name: 'name'},
     last: {value: '', error: '', hasError: true, active: false, name: 'last'},
     email: {value: '', error: '', hasError: true, active: false, name: 'email'},
-    birthday: {value: '', error: '', hasError: true, active: false, name: 'birthday'},
     address: {value: '', error: '', hasError: true, active: false, name: 'address'},
     document: {value: '', error: '', hasError: true, active: false, name: 'document'},
     postalcode: {value: '', error: '', hasError: true, active: false, name: 'postalcode'},
@@ -16,6 +20,34 @@ const initialState = {
 const Checkout = () => {
 
     const [formState, inputHandler, inputFocus, inputBlur] = useForm(initialState);
+    const {cart, total} = useContext(CartContext);
+    const [orderCreated, setOrderCreated] = useState(null);
+    const { state } = useLocation();
+    const navigate = useNavigate();
+    let query = useQuery();
+
+    console.log(query.get('cartId'))
+
+    useEffect(() => {
+       
+        const cartId = query.get("cartId") 
+        
+        if(query.get("cartId")) {
+            const getCart = async () => {
+                const cart = await firebaseServices.getCartById(cartId)
+                return cart
+            }
+            getCart()
+                .then((cart) => {
+                    setCart(cart.items)
+                })
+                .catch((error) => {
+                    console.log({error})
+                })
+        }
+
+    }, [query])
+
 
     const onChange = (event) => {
         const { name, value } = event.target
@@ -30,8 +62,49 @@ const Checkout = () => {
         inputBlur({ name })
     }
 
-    console.log(formState);
+    const onHandlerOrder = async () => {
+        const newOrder = {
+            buyer: {
+                name: formState.name.value,
+                last: formState.last.value,
+                email: formState.email.value,
+                address: formState.address.value,
+                document: formState.document.value,
+                postalcode: formState.document.value,
+            },
+            createdAt: new Date(),
+            items: cart,
+            payment: {
+                currency: 'USD',
+                method: 'CASH',
+                type: 'CASH'
+            },
+            seller: {
+                name: 'Juan',
+                phone: '123123123',
+                email: 'juan@juan.com',
+            },
+            shipping: {
+                deliveryDay: new Date() + 7,
+                trackingNumber: '0000001',
+                type: 'DELIVERY'
+            },
+            total: total
+        }
+        
+        const orderId = await firebaseServices.createOrder(newOrder);
+        await firebaseServices.updateCart(state?.cartId);
+        return {
+            orderId,
+        
+        }
+    }
 
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        const orderId = await onHandlerOrder();
+        setOrderCreated(orderId)
+    }
  
     return (
 
@@ -39,7 +112,7 @@ const Checkout = () => {
             <div className='checkoutDetailContainer'>
                 <div className='checkoutFormContainer'>
                     <h1 className='checkoutTitle'>Checkout</h1>
-                    <form className="checkoutForm">
+                    <form onSubmit={onSubmit} className="checkoutForm">
                         <div className="checkoutFormContent">
                             <div className='inputContainer'>
                                 <Input 
@@ -85,22 +158,7 @@ const Checkout = () => {
                                     error={formState.email.error}
                                     hasError={formState.email.hasError}                             
                                     />
-                             </div>                            
-                             <div className='inputContainer'>
-                                <Input 
-                                    placeholder='Your Birthday'
-                                    id='birthday'
-                                    name='birthday'
-                                    required={true}
-                                    label='birthday'
-                                    onChange={onChange}
-                                    onFocus={() => onFocus({ name: 'birthday' })}
-                                    onBlur={() => onBlur({name: 'birthday' })}
-                                    active={formState.birthday.active}        
-                                    error={formState.birthday.error}
-                                    hasError={formState.birthday.hasError}                       
-                                    />
-                             </div>                            
+                             </div>                                                   
                              <div className='inputContainer'>
                                 <Input 
                                     placeholder='Your Address'
@@ -144,7 +202,7 @@ const Checkout = () => {
                                      />
                              </div>                   
                         </div>
-                        <div className="checkoutContainer">
+                        <div className="checkoutActionsContainer">
                             <button disabled={!formState.isFormValid} type='submit' className='butttonCheckout'>Checkout</button>
                         </div>
                     </form>

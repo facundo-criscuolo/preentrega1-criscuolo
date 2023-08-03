@@ -6,6 +6,11 @@
 .inputContainer {
     padding: 10px 5%;
 }
+
+.inputContainer .container:hover {
+    background-color: transparent;
+    box-shadow: none;
+}
 .checkoutTitle {
     text-align: center;
     font-size: 40px;
@@ -16,4 +21,15 @@
 
 .butttonCheckout:disabled {
     cursor: not-allowed
+}
+
+.errorField {
+    background-color: red;
+}
+
+.checkoutActionsContainer{
+    DISPLAY: FLEX;
+    flex-direction: column;
+    width: 50%;
+    padding: 2%;
 }

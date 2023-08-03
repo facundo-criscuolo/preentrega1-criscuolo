@@ -39,8 +39,6 @@ const Input = ({
                 <span className='errorField'>{error}</span>
             )}
             
-            {/* {console.log(error)} */}
-
         </div>
         
     )

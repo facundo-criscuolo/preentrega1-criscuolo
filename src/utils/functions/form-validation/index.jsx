@@ -4,7 +4,7 @@ const documentRegex = /^[0-9]{8,15}$/;
 const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 const addressRegex = /^[a-zA-ZÀ-ÿ0-9\s]{8,80}$/;
 const postalcodeRegex = /^[0-9]{3,10}$/;
-// const birthdayRegex = /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
+const birthdayRegex = /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
 
 
 export const validateInput = ({ type, value }) => {
@@ -57,18 +57,6 @@ export const validateInput = ({ type, value }) => {
             } else if(!emailRegex.test(formatValue)) {
                 hasError = true;
                 error = 'Email is invalid';
-            } else {
-                hasError = false;
-                error = '';
-            }
-            break;
-        case 'birthday':
-            if(formatValue === "") {
-                hasError = true;
-                error = 'Birthday is required';
-            } else if(!birthdayRegex.test(formatValue)) {
-                hasError = true;
-                error = 'Birthday is invalid';
             } else {
                 hasError = false;
                 error = '';

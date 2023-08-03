@@ -1,14 +1,36 @@
 import React from "react";
+import "./styles.css";
 import { useContext } from "react";
 import { CartContext } from "../../../context/cart-context";
 import { useNavigate } from "react-router-dom";
-import "./styles.css";
+import { firebaseServices } from "../../../services/firebase";
 
 function Cart () {
 
     const {cart, onAddToCart, onDecreaseItem, onRemoveCartItem, getCartTotalQuantity, total } = useContext(CartContext);
     const navigate = useNavigate();
     const history = window.history;
+
+    const onHandlerCreateCart = async () => {
+        const newCart = {
+            buyer: {
+               id: 1,
+            },
+            items: cart,
+            createdAt: new Date(),
+            total: total,
+            status: 'pending',
+        }
+
+        const cartId = await firebaseServices.createCart(newCart)
+
+        return cartId
+    }
+
+    const onHandlerCheckout = async () => {
+        const cartId = await onHandlerCreateCart() 
+        navigate('/checkout', { state : { cartId: cartId.id } })
+    }
 
     return (
 
@@ -43,7 +65,7 @@ function Cart () {
                         <div className="cartActionsContainer">
                             <h3 className="cartSubtotal">Subtotal: USD {total}</h3> 
                             <p className="cartTotalQuantity"> Items in Cart: {getCartTotalQuantity()}</p>
-                            <button type="button" className="cartActionsCheckout">Go To Checkout</button>
+                            <button type="button" onClick={onHandlerCheckout} className="cartActionsCheckout">Go To Checkout</button>
                         </div>
 
                         <div className="headerDetailContainer">
