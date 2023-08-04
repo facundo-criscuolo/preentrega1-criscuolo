@@ -1,13 +1,13 @@
 import "./App.css";
 import Header from "../src/components/header/index";
 import Home from "./components/pages/home";
-import { Route, Routes } from "react-router-dom";
 import ProductDetail from "./components/pages/product-detail";
 import Category from "./components/pages/category";
-import { CartProvider } from "./context/cart-context";
 import Cart from "./components/pages/cart";
 import Checkout from "./components/pages/checkout";
 import SuccessOrder from "./components/pages/success-order";
+import { Route, Routes } from "react-router-dom";
+import { CartProvider } from "./context/cart-context";
 
 function App() {
 
